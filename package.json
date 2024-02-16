@@ -1,5 +1,9 @@
 {
   "dependencies": {
     "semantic-ui-react": "^3.0.0-beta.2"
+  },
+  "devDependencies": {
+    "@types/uuid": "^9.0.8",
+    "uuid": "^9.0.1"
   }
 }
