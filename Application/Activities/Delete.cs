@@ -1,32 +1,31 @@
+using Domain;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Persistence;
 
-namespace Application.Activities
+namespace Application.Activities;
+
+public class Delete
 {
-    public class Delete
+    public class Command : IRequest
     {
-        public class Command : IRequest
+        public Guid Id { get; set; }
+    }
+
+    public class Handler : IRequestHandler<Command>
+    {
+        private readonly DataContext _context;
+        public Handler(DataContext context)
         {
-            public Guid Id { get; set; }
+            _context = context;
+
         }
-
-        public class Handler : IRequestHandler<Command>
+        public async Task Handle(Command request, CancellationToken cancellationToken)
         {
-            private readonly DataContext _context;
-            public Handler(DataContext context)
-            {
-                _context = context;
+            Activity activity = await _context.Activities.FindAsync(request.Id);
 
-            }
-            public async Task Handle(Command request, CancellationToken cancellationToken)
-            {
-                var activity = await _context.Activities.FindAsync(request.Id);
+            _context.Remove(activity);
 
-                _context.Remove(activity);
-
-                await _context.SaveChangesAsync();
-            }
+            await _context.SaveChangesAsync();
         }
     }
 }
