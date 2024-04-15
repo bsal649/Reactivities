@@ -6,7 +6,10 @@ public class Seed
 {
     public static async Task SeedData(DataContext context)
     {
-        if (context.Activities.Any()) return;
+        if (context.Activities.Any())
+        {
+            return;
+        }
 
         List<Activity> activities = new List<Activity>
         {

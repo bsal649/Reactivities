@@ -32,7 +32,8 @@ try
     DataContext context = services.GetRequiredService<DataContext>();
     context.Database.Migrate();
     await Seed.SeedData(context);
-} catch (Exception ex)
+}
+catch (Exception ex)
 {
     ILogger<Program> logger = services.GetRequiredService<ILogger<Program>>();
     logger.LogError(ex, "An error occured during migration");
