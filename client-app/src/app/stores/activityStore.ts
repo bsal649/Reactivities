@@ -1,13 +1,18 @@
 import { makeAutoObservable } from 'mobx';
+import { Activity } from '../models/activity';
 
 export default class ActivityStore {
-  title = 'Hello from MobX!';
+  activities: Activity[] = [];
+  selectedActivity: Activity | null = null;
+  editMode = false;
+  loading = false;
+  loadingInitial = false;
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  setTitle = () => {
-    this.title = this.title + '!';
+  loadActivities = async  () => {
+    this.loadingInitial = true;
   };
 }

@@ -86,12 +86,6 @@ function App() {
     <Fragment>
       <NavBar openForm={handleFormOpen} />
       <Container style={{ marginTop: '7em' }}>
-        <h2>{activityStore.title}</h2>
-        <Button
-          content="Add exclamation!"
-          positive
-          onClick={activityStore.setTitle}
-        />
         <ActivityDashboard
           activities={activities}
           selectedActivity={selectedActivity}
