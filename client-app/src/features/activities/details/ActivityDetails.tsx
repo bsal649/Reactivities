@@ -6,8 +6,8 @@ import {
   CardHeader,
   CardMeta,
   Image,
-} from "semantic-ui-react";
-import { Activity } from "../../../app/models/activity";
+} from 'semantic-ui-react';
+import { Activity } from '../../../app/models/activity';
 
 interface Props {
   activity: Activity;

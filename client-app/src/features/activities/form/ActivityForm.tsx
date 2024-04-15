@@ -1,6 +1,6 @@
-import { ChangeEvent, useState } from "react";
-import { Button, Form, Segment } from "semantic-ui-react";
-import { Activity } from "../../../app/models/activity";
+import { ChangeEvent, useState } from 'react';
+import { Button, Form, Segment } from 'semantic-ui-react';
+import { Activity } from '../../../app/models/activity';
 
 interface Props {
   activity: Activity | undefined;
@@ -16,13 +16,13 @@ export default function ActivityForm({
   submitting,
 }: Props) {
   const initialState = selectedActivity ?? {
-    id: "",
-    title: "",
-    category: "",
-    description: "",
-    date: "",
-    city: "",
-    venue: "",
+    id: '',
+    title: '',
+    category: '',
+    description: '',
+    date: '',
+    city: '',
+    venue: '',
   };
 
   const [activity, setActivity] = useState(initialState);
@@ -32,7 +32,7 @@ export default function ActivityForm({
   }
 
   function handleInputChange(
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) {
     const { name, value } = event.target;
     setActivity({ ...activity, [name]: value });
@@ -78,7 +78,13 @@ export default function ActivityForm({
           name="venue"
           onChange={handleInputChange}
         />
-        <Button loading={submitting} floated="right" positive type="submit" content="Submit" />
+        <Button
+          loading={submitting}
+          floated="right"
+          positive
+          type="submit"
+          content="Submit"
+        />
         <Button
           onClick={closeForm}
           floated="right"

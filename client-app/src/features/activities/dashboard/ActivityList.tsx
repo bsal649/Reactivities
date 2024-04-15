@@ -1,6 +1,6 @@
-import { Button, Item, Label, Segment } from "semantic-ui-react";
-import { Activity } from "../../../app/models/activity";
-import { SyntheticEvent, useState } from "react";
+import { Button, Item, Label, Segment } from 'semantic-ui-react';
+import { Activity } from '../../../app/models/activity';
+import { SyntheticEvent, useState } from 'react';
 
 interface Props {
   activities: Activity[];
@@ -17,7 +17,10 @@ export default function ActivityList({
 }: Props) {
   const [target, setTarget] = useState('');
 
-  function handleActivityDelete(e: SyntheticEvent<HTMLButtonElement>, id: string) {
+  function handleActivityDelete(
+    e: SyntheticEvent<HTMLButtonElement>,
+    id: string,
+  ) {
     setTarget(e.currentTarget.name);
     deleteActivity(id);
   }
