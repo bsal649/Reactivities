@@ -17,13 +17,16 @@ export default [
     },
     plugins: {
       '@typescript-eslint': tsPlugin,
+      react: reactPlugin,
       'react-hooks': reactHooks,
     },
     rules: {
-      ...tsPlugin.configs.recommended.rules,
       'no-console': 'warn',
       ...reactPlugin.configs['jsx-runtime'].rules,
+      ...tsPlugin.configs.recommended.rules,
       'react-hooks/exhaustive-deps': 'warn', // Add the rule for enforcing useEffect dependencies
+      'no-undef': 'off', // Disable the 'no-undef' rule because TypeScript handles this
+      'react/jsx-uses-react': 'off', // Disable the rule that requires React to be in scope
     },
   },
   {
