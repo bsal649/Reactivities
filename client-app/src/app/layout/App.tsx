@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from 'react';
-import { Button, Container } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 import { Activity } from '../models/activity';
 import NavBar from './NavBar';
 import ActivityDashboard from '../../features/activities/dashboard/ActivityDashboard';
@@ -21,15 +21,7 @@ function App() {
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
-    agent.Activities.list().then((response) => {
-      let activities: Activity[] = [];
-      response.forEach((activity) => {
-        activity.date = activity.date.split('T')[0];
-        activities.push(activity);
-      });
-      setActivities(activities);
-      setLoading(false);
-    });
+    activityStore.loadActivities();
   }, []);
 
   function handleSelectActivity(id: string) {
